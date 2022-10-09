@@ -1,8 +1,8 @@
 {
-  "name": "fonkera",
+  "name": "erciyasonline",
   "version": "0.0.1",
-  "description": "FONKERA",
-  "productName": "FONKERA",
+  "description": "ERCİYAS Avukatlık Bürosu",
+  "productName": "ERCİYAS Avukatlık Bürosu",
   "author": "fatihcerci",
   "private": true,
   "scripts": {

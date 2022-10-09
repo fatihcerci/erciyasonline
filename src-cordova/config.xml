@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.lenora.fonkera" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>FONKERA</name>
-    <description>FONKERA</description>
+<widget id="com.lenora.erciyasonline" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>ERCİYAS Avukatlık Bürosu</name>
+    <description>ERCİYAS Avukatlık Bürosu</description>
     <author email="fatihcerci001@gmail.com" href="https://lenorabilisim.com">
         LENORA Bilişim - Fatih Çerçi
     </author>

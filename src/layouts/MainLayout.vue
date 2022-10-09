@@ -1,12 +1,8 @@
 <template>
   <q-layout view="hHh lpR fFf">
 
-    <q-header elevated class="bg-primary text-white" height-hint="98">
-      <q-toolbar>
-        <q-toolbar-title>
-          ERCİYAS Avukatlık Bürosu
-        </q-toolbar-title>
-      </q-toolbar>
+    <q-header elevated class="q-pa-sm bg-primary text-white" height-hint="98">
+
 
       <q-tabs align="center">
         <q-route-tab to="/" label="Ana Sayfa" />
@@ -24,13 +20,10 @@
       <router-view />
     </q-page-container>
 
-    <q-footer reveal elevated class="bg-grey-8 text-white">
+    <q-footer reveal class="bg-grey-2 text-grey-8">
       <q-toolbar>
         <q-toolbar-title>
-          <q-avatar>
-            <img src="https://cdn.quasar.dev/logo-v2/svg/logo-mono-white.svg">
-          </q-avatar>
-          <div>Title</div>
+          <div>Erciyas Avukatlık Bürosu</div>
         </q-toolbar-title>
       </q-toolbar>
     </q-footer>

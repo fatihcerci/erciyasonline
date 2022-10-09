@@ -172,9 +172,9 @@ module.exports = configure(function (ctx) {
       },
 
       manifest: {
-        name: `FONKERA`,
-        short_name: `FONKERA`,
-        description: `FONKERA`,
+        name: `ERCİYAS Avukatlık Bürosu`,
+        short_name: `ERCİYAS Avukatlık Bürosu`,
+        description: `ERCİYAS Avukatlık Bürosu`,
         display: 'standalone',
         orientation: 'portrait',
         background_color: '#ffffff',

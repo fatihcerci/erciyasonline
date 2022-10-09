@@ -1,6 +1,6 @@
 export class Api {
   static Base = class {
-    static get URL() { return "http://localhost/erciyasrest" }
+    static get URL() { return "http://localhost/erciyasonlinerest" }
     static get CaptchaSiteKey() { return "6LedtP4gAAAAAKBm1GWXalHnn6YEXlqpppqu9agg" }
 
     //static get URL() { return "http://ironpunch.org/fonkerarest" }

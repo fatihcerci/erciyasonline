@@ -1,8 +1,8 @@
 {
-  "name": "com.lenora.fonkera",
-  "displayName": "FONKERA",
+  "name": "com.lenora.erciyasonline",
+  "displayName": "ERCİYAS Avukatlık Bürosu",
   "version": "1.0.0",
-  "description": "FONKERA",
+  "description": "ERCİYAS Avukatlık Bürosu",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
