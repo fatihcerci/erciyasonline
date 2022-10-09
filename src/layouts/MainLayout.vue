@@ -1,0 +1,254 @@
+<template>
+  <q-layout view="hHh lpR fFf">
+
+    <q-header elevated class="bg-primary text-white" height-hint="98">
+      <q-toolbar>
+        <q-toolbar-title>
+          ERCİYAS Avukatlık Bürosu
+        </q-toolbar-title>
+      </q-toolbar>
+
+      <q-tabs align="center">
+        <q-route-tab to="/" label="Ana Sayfa" />
+        <q-route-tab to="/" label="Nasıl Çalışır?" />
+        <q-route-tab to="/" label="Sık Sorulan Sorular" />
+        <q-route-tab to="/" label="Hakkımızda" />
+        <q-route-tab to="/" label="Blog" />
+        <q-route-tab to="/" label="İletişim" />
+      </q-tabs>
+
+
+    </q-header>
+
+    <q-page-container>
+      <router-view />
+    </q-page-container>
+
+    <q-footer reveal elevated class="bg-grey-8 text-white">
+      <q-toolbar>
+        <q-toolbar-title>
+          <q-avatar>
+            <img src="https://cdn.quasar.dev/logo-v2/svg/logo-mono-white.svg">
+          </q-avatar>
+          <div>Title</div>
+        </q-toolbar-title>
+      </q-toolbar>
+    </q-footer>
+
+  </q-layout>
+</template>
+
+<script>
+import { onMounted, ref, computed, toRefs, reactive} from "vue"
+import { useQuasar } from 'quasar'
+import { useRouter } from "vue-router"
+
+import menuController from "../controllers/menuController"
+
+import userService from "../services/userService"
+import Language from "src/components/Language.vue"
+import apiService from 'src/services/apiService'
+
+const searchResults = [
+  {
+    label: 'Fatih Çerçi',
+    value: '1',
+    phone: '0(507) 216 58 24',
+    email: 'fatihcerci001@gmail.com',
+    avatar: 'https://cdn.quasar.dev/img/avatar4.jpg'
+  },
+  {
+    label: 'Meryem Çerçi',
+    value: '2',
+    phone: '0(507) 916 91 76',
+    email: 'melike.sbp@gmail.com',
+    avatar: 'https://cdn.quasar.dev/img/avatar2.jpg'
+  },
+]
+
+export default {
+  name: "MainLayout",
+  components: {
+    //Language
+},
+  computed: {
+    crumbs: function() {
+      this.setMenu(this.$route.meta.menu)
+
+      let pathArray = this.$route.path.split("/")
+
+      let breadcrumbs = pathArray.reduce((breadcrumbArray, path, idx) => {
+        if(!this.$route.matched[idx]) {
+          return breadcrumbArray
+        }
+
+        if(this.$route.matched[idx].meta && this.$route.matched[idx].meta.parent) {
+          let breadCrumbObj = {
+            path: this.$route.matched[idx].meta.parent.path,
+            to: this.$route.matched[idx].meta.parent.path,
+            text: this.$route.matched[idx] ? (this.$route.matched[idx].meta.parent.breadCrumb || path) : (this.$route.matched[idx-1].meta.parent.breadCrumb || path),
+            icon: this.$route.matched[idx] ? this.$route.matched[idx].meta.parent.icon : this.$route.matched[idx-1].meta.parent.icon,
+          }
+          breadcrumbArray.push(breadCrumbObj)
+
+          breadCrumbObj = {
+            path: this.$route.matched[idx].path,
+            to: this.$route.matched[idx].path,
+            text: this.$route.matched[idx].meta.breadCrumb,
+            icon: this.$route.matched[idx].meta.icon
+          }
+
+          if(breadCrumbObj.to.includes("//")) {
+            breadCrumbObj.to = breadCrumbObj.to.substring(1, breadCrumbObj.to.length)
+          }
+          breadcrumbArray.push(breadCrumbObj)
+
+        } else {
+          let breadCrumbObj = {
+            path: path,
+            to: breadcrumbArray[idx - 1]
+              ?  breadcrumbArray[idx - 1].to + "/" + path
+              : "/" + path,
+            text: this.$route.matched[idx] ? (this.$route.matched[idx].meta.breadCrumb || path) : (this.$route.matched[idx-1].meta.breadCrumb || path),
+            icon: this.$route.matched[idx] ? this.$route.matched[idx].meta.icon : this.$route.matched[idx-1].meta.icon,
+          }
+
+          if(breadCrumbObj.to.includes("//")) {
+            breadCrumbObj.to = breadCrumbObj.to.substring(1, breadCrumbObj.to.length)
+          }
+          breadcrumbArray.push(breadCrumbObj)
+        }
+
+        return breadcrumbArray
+      }, [])
+      return breadcrumbs
+    }
+
+  },
+
+  setup() {
+    const $q = useQuasar()
+
+    const router = useRouter()
+
+    const expanded = router.currentRoute.value.path.includes('organization') ? ref(true) : ref(false)
+
+    const leftDrawerOpen = ref(false)
+    const searchBoxOpen = ref(false)
+
+    const state = reactive({
+      search : ''
+    })
+
+    const searchResult = ref(searchResults)
+
+    const { menu, getMenu, setMenu } = menuController()
+    const { getUser } = userService()
+    const { fetch } = apiService()
+
+
+    const test = (val) => {
+      alert("OID:" + val)
+    }
+
+
+    onMounted(async () => {
+      if(!localStorage.getItem("sessionInfo")) {
+        router.push("/login")
+      }
+    })
+
+    return {
+      ...toRefs(state),
+      router,
+      expanded,
+      getMenu,
+      setMenu,
+      getUser,
+      leftDrawerOpen,
+      toggleLeftDrawer () {
+        leftDrawerOpen.value = !leftDrawerOpen.value
+      },
+      searchBoxOpen,
+      toggleSearchBox () {
+        state.search = ''
+        searchBoxOpen.value = !searchBoxOpen.value
+      },
+      searchResult,
+      filterFn (val, update, abort) {
+        if (val.length < 2) {
+          abort()
+          return
+        }
+
+        update(() => {
+          const needle = val.toLowerCase()
+          searchResult.value = searchResults.filter(v => v.label.toLowerCase().indexOf(needle) > -1)
+        })
+      },
+      test,
+      logout : async () => {
+        await fetch("userop/logout", {id:getUser().id}, true)
+        localStorage.removeItem('sessionInfo')
+        localStorage.removeItem('token')
+        router.push('/login')
+      },
+
+    }
+  },
+}
+</script>
+
+<style lang="css">
+  .q-item__section--avatar {
+    min-width: 0px !important;
+  }
+
+  .user-menu {
+    -webkit-box-shadow: 0 5px 25px rgb(34 41 47 / 10%) !important;
+    box-shadow: -1 5px 25pxrgba(34,41,47,.1) !important;
+    border:1px solid rgba(34,41,47,.1);
+  }
+
+  .q-badge--floating {
+    top: 1px !important;
+    right: -2px !important;
+  }
+
+  .user-menu .q-hoverable:hover {
+    color: #6610f2 !important;
+  }
+
+  .user-menu .q-hoverable:hover > .q-focus-helper {
+    background-color: #6610f2 !important;
+  }
+
+  .menu-active {
+    background: linear-gradient(118deg,#7367f0,rgba(115,103,240,.7)) !important;
+    color : white !important;
+    -webkit-box-shadow: 0 0 10px 1px rgb(115 103 240 / 70%) !important;
+    box-shadow: 0 0 10px 1px rgba(115,103,240,.7) !important;
+    border-radius: 4px !important;
+  }
+
+  .language .q-select__dropdown-icon {
+    display: none !important;
+  }
+
+  .q-field--standard .q-field__control:before {
+    border-bottom:none;
+  }
+
+  .q-toolbar .q-select__dropdown-icon {
+    display: none;
+  }
+
+  .q-menu.q-position-engine {
+    background: #f5f5f5  !important;
+    color: #5e5873 !important;
+    font-weight: 600 !important;
+    box-shadow: none !important;
+  }
+
+
+</style>
