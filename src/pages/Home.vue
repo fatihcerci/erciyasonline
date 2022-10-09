@@ -4,27 +4,16 @@
 
 
       <div class="col-md-12">
-        <q-card class="shadow-25 bg-primary" style="min-height: 340px; opacity:1; border-radius: 0px;">
-          <!--
-          <q-card-section class="q-pa-none">
-            <q-item>
-              <q-item-section>
-                <div class="q-pa-md q-gutter-sm text-center">
-                  <q-btn color="accent" class="q-pa-md text-white" unelevated icon="help" label="SORU SOR" />
-                  <q-btn color="accent" class="q-pa-md text-white" unelevated icon="event_available" label="RANDEVU TALEP ET" />
-                </div>
-              </q-item-section>
-            </q-item>
-          </q-card-section>
-          -->
-
-          <q-card-section class="row q-pa-none q-gutter-sm justify-center items-center">
-            <div class="col-md-6">
+        <q-parallax
+          src="~/assets/home-parallax3.jpg"
+        >
+            <div class="col-md-6 bg-transparent">
               <q-carousel
                 v-model="slide"
                 transition-prev="slide-right"
                 transition-next="slide-left"
-                transition-duration="500"
+                transition-duration="1000"
+                transition="100"
                 swipeable
                 animated
                 infinite
@@ -35,7 +24,7 @@
                 padding
                 arrows
                 height="300px"
-                class="bg-primary text-white rounded-borders"
+                class="bg-transparent text-white rounded-borders"
               >
                 <q-carousel-slide name="style" class="column no-wrap flex-center">
                   <q-icon name="help" size="56px" />
@@ -65,16 +54,159 @@
                 </q-carousel-slide>
               </q-carousel>
             </div>
-          </q-card-section>
 
 
-        </q-card>
+      </q-parallax>
+      </div>
+
+
+      <div class="row q-pt-md justify-center items-center q-gutter-md">
+        <div class="col-md-2">
+          <q-card square class="bg-primary text-white q-pa-none shadow-0">
+            <q-card-section>
+              <q-icon name="help" color="secondary" size="2.5rem" />
+            </q-card-section>
+            <q-card-section class="q-pt-none">
+              Yasal sorunuzu hemen sorun, hemen cevabını alın
+            </q-card-section>
+            <q-separator dark />
+          </q-card>
+        </div>
+
+        <div class="col-md-2">
+          <q-card square class="bg-primary text-white q-pa-none shadow-0" style="opacity:0.9">
+            <q-card-section>
+              <q-icon name="event_available" color="secondary" size="2.5rem" />
+            </q-card-section>
+            <q-card-section class="q-pt-none">
+              Randevu talebinizi oluşturun, birebir görüşmeye başlayın
+            </q-card-section>
+            <q-separator dark />
+          </q-card>
+        </div>
+
+        <div class="col-md-2">
+          <q-card square class="bg-primary text-white q-pa-none shadow-0" style="opacity:0.8">
+            <q-card-section>
+              <q-icon name="thumb_up" color="secondary" size="2.5rem" />
+            </q-card-section>
+            <q-card-section class="q-pt-none">
+              Sorununuzu çözün ve yolunuza devam Edin
+            </q-card-section>
+            <q-separator dark />
+          </q-card>
+        </div>
+      </div>
+
+      <div class="row q-pt-xl justify-center items-center q-gutter-md text-primary text-center ">
+        <h5 class="text-bold">
+          İhtiyacınız Olan Tüm Yasal Yardımı, <br>
+          İstediğiniz Zaman İstediğiniz Yerden Alın!
+        </h5>
+      </div>
+
+
+      <div class="row justify-center items-center q-gutter-sm">
+        <div class="col-md-2">
+          <q-item class="bg-grey-2 text-primary font-16 text-bold shadow-0" clickable>
+            <q-item-section class="q-pa-lg">
+              <q-item-label><q-icon name="expand_circle_down" color="secondary" style="transform: rotate(270deg);" size="1.8rem" /> Ticaret Hukuku</q-item-label>
+            </q-item-section>
+          </q-item>
+        </div>
+
+        <div class="col-md-2">
+          <q-item class="bg-grey-2 text-primary font-16 text-bold shadow-0" clickable>
+            <q-item-section class="q-pa-lg">
+              <q-item-label><q-icon name="expand_circle_down" color="secondary" style="transform: rotate(270deg);" size="1.8rem" /> Sözleşme Hukuku</q-item-label>
+            </q-item-section>
+          </q-item>
+        </div>
+
+        <div class="col-md-2">
+          <q-item class="bg-grey-2 text-primary font-16 text-bold shadow-0" clickable>
+            <q-item-section class="q-pa-lg">
+              <q-item-label><q-icon name="expand_circle_down" color="secondary" style="transform: rotate(270deg);" size="1.8rem" /> Fikri Haklar Hukuku</q-item-label>
+            </q-item-section>
+          </q-item>
+        </div>
+
+        <div class="col-md-2">
+          <q-item class="bg-grey-2 text-primary font-16 text-bold shadow-0" clickable>
+            <q-item-section class="q-pa-lg">
+              <q-item-label><q-icon name="expand_circle_down" color="secondary" style="transform: rotate(270deg);" size="1.8rem" /> İcra ve İflas Hukuku</q-item-label>
+            </q-item-section>
+          </q-item>
+        </div>
+
+      </div>
+
+      <div class="row q-pt-md justify-center items-center q-gutter-sm">
+        <div class="col-md-2">
+          <q-item class="bg-grey-2 text-primary font-16 text-bold shadow-0" clickable>
+            <q-item-section class="q-pa-lg">
+              <q-item-label><q-icon name="expand_circle_down" color="secondary" style="transform: rotate(270deg);" size="1.8rem" /> İş Hukuku</q-item-label>
+            </q-item-section>
+          </q-item>
+        </div>
+
+        <div class="col-md-2">
+          <q-item class="bg-grey-2 text-primary font-16 text-bold shadow-0" clickable>
+            <q-item-section class="q-pa-lg">
+              <q-item-label><q-icon name="expand_circle_down" color="secondary" style="transform: rotate(270deg);" size="1.8rem" /> Kira Hukuku</q-item-label>
+            </q-item-section>
+          </q-item>
+        </div>
+
+        <div class="col-md-2">
+          <q-item class="bg-grey-2 text-primary font-16 text-bold shadow-0" clickable>
+            <q-item-section class="q-pa-lg">
+              <q-item-label><q-icon name="expand_circle_down" color="secondary" style="transform: rotate(270deg);" size="1.8rem" /> Aile Hukuku</q-item-label>
+            </q-item-section>
+          </q-item>
+        </div>
+
+        <div class="col-md-2">
+          <q-item class="bg-grey-2 text-primary font-16 text-bold shadow-0" clickable>
+            <q-item-section class="q-pa-lg">
+              <q-item-label><q-icon name="expand_circle_down" color="secondary" style="transform: rotate(270deg);" size="1.8rem" /> Tüketici Hukuku</q-item-label>
+            </q-item-section>
+          </q-item>
+        </div>
+
+      </div>
+
+      <div class="row q-pt-md justify-center items-center">
+          <q-item class="bg-grey-2 text-primary font-16 text-bold shadow-0" clickable>
+            <q-item-section class="q-pa-lg">
+              <q-item-label><q-icon name="expand_circle_down" color="secondary" style="transform: rotate(270deg);" size="1.8rem" /> Yukarıdakilerden hiçbiri değil. Derdimi anlatmak istiyorum.</q-item-label>
+            </q-item-section>
+          </q-item>
+      </div>
+
+      <div class="row q-pt-xl justify-center items-center">
+        <div class="col-md-8">
+          <q-toolbar class="bg-primary text-white shadow-0 q-pl-md q-pr-none">
+            <h4 class="q-pl-xl bg-primary text-white font-18 shadow-0 q-pa-md">
+                  Barolar Birliğinin Uygulamış Olduğu<br>
+                  Asgari Tutardan Ücretlendirilmektedir.
+            </h4>
+            <q-space />
+
+            <q-img src="~/assets/ucretlendirme.jpg" style="width:50%" />
+          </q-toolbar>
+        </div>
+
       </div>
 
 
 
 
 
+      <div class="row q-pt-md justify-center items-center" style="min-height:500px;">
+
+
+      </div>
   </q-page>
 </template>
 
