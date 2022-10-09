@@ -4,8 +4,9 @@
 
 
       <div class="col-md-12">
-        <q-card class="shadow-25 bg-primary" style="min-height: 340px; opacity:0.9; border-radius: 0px;">
-          <q-card-section>
+        <q-card class="shadow-25 bg-primary" style="min-height: 340px; opacity:1; border-radius: 0px;">
+          <!--
+          <q-card-section class="q-pa-none">
             <q-item>
               <q-item-section>
                 <div class="q-pa-md q-gutter-sm text-center">
@@ -15,45 +16,57 @@
               </q-item-section>
             </q-item>
           </q-card-section>
+          -->
 
-          <q-card-section>
-            <q-carousel
-              v-model="slide"
-              transition-prev="scale"
-              transition-next="scale"
-              swipeable
-              animated
-              infinite
-              :autoplay="autoplay"
-              control-color="white"
-              navigation
-              padding
-              arrows
-              height="300px"
-              class="bg-primary text-white rounded-borders"
-            >
-              <q-carousel-slide name="style" class="column no-wrap flex-center">
-                <q-icon name="help" size="56px" />
-                <div class="q-mt-md text-center font-30">
-                  Gerçek Avukatlara Soru Sorun!
-                  <q-separator color="secondary" style="height:2px;"/>
-                </div>
-                <div class="q-mt-md text-center font-20">
-                  {{ lorem }}
-                </div>
-              </q-carousel-slide>
-              <q-carousel-slide name="tv" class="column no-wrap flex-center">
-                <q-icon name="help" size="56px" />
-                <div class="q-mt-md text-center font-30">
-                  Randevu Talep Edin
-                  <q-separator color="secondary" style="height:2px;"/>
-                </div>
-                <div class="q-mt-md text-center font-20">
-                  {{ lorem }}
-                </div>
-              </q-carousel-slide>
-            </q-carousel>
+          <q-card-section class="row q-pa-none q-gutter-sm justify-center items-center">
+            <div class="col-md-6">
+              <q-carousel
+                v-model="slide"
+                transition-prev="slide-right"
+                transition-next="slide-left"
+                transition-duration="500"
+                swipeable
+                animated
+                infinite
+                :autoplay="autoplay"
+                control-type="regular"
+                control-color="accent"
+                control-text-color="white"
+                padding
+                arrows
+                height="300px"
+                class="bg-primary text-white rounded-borders"
+              >
+                <q-carousel-slide name="style" class="column no-wrap flex-center">
+                  <q-icon name="help" size="56px" />
+                  <div class="q-mt-md text-center font-30">
+                    &nbsp;&nbsp;&nbsp;Gerçek Avukatlara Soru Sorun&nbsp;&nbsp;&nbsp;
+                    <q-separator color="secondary" style="height:2px;"/>
+                  </div>
+                  <div class="q-mt-md text-center font-20">
+                    {{ lorem }}
+                    <br />
+                    <br />
+                    <q-btn color="secondary" label="SORU SOR" icon="help" />
+                  </div>
+                </q-carousel-slide>
+                <q-carousel-slide name="tv" class="column no-wrap flex-center">
+                  <q-icon name="event_available" size="56px" />
+                  <div class="q-mt-md text-center font-30">
+                    &nbsp;&nbsp;&nbsp;Randevu Talep Edin&nbsp;&nbsp;&nbsp;
+                    <q-separator color="secondary" style="height:2px;"/>
+                  </div>
+                  <div class="q-mt-md text-center font-20">
+                    {{ lorem }}
+                    <br />
+                    <br />
+                    <q-btn color="secondary" label="RANDEVU TALEP ET" icon="event_available" />
+                  </div>
+                </q-carousel-slide>
+              </q-carousel>
+            </div>
           </q-card-section>
+
 
         </q-card>
       </div>
