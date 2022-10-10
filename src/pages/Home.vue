@@ -36,7 +36,7 @@
                     {{ lorem }}
                     <br />
                     <br />
-                    <q-btn color="secondary" glossy label="SORU SOR" icon="help" />
+                    <q-btn color="secondary" unelevated glossy label="SORU SOR" icon="help" />
                   </div>
                 </q-carousel-slide>
                 <q-carousel-slide name="tv" class="column no-wrap flex-center">
@@ -49,7 +49,7 @@
                     {{ lorem }}
                     <br />
                     <br />
-                    <q-btn color="secondary" glossy label="RANDEVU TALEP ET" icon="event_available" />
+                    <q-btn color="secondary" unelevated glossy label="RANDEVU TALEP ET" icon="event_available" />
                   </div>
                 </q-carousel-slide>
               </q-carousel>
@@ -201,32 +201,38 @@
 
 
       <div class="q-mt-md q-gutter-md">
-        <q-parallax>
+        <q-parallax style="height:700px;">
           <template v-slot:media>
             <img src="~/assets/home-parallax4.jpg">
           </template>
 
           <template v-slot:content="scope">
             <div
-              class="row justify-center text-white"
+              class="row justify-center text-white flex-center"
               :style="{
-                opacity: 0.45 + (1 - scope.percentScrolled) * 0.55,
+                opacity: 0.65 + (1 - scope.percentScrolled) * 0.75,
                 top: (scope.percentScrolled * 60) + '%',
                 left: 0,
                 right: 0
               }"
             >
 
-              <div class="col-md-6 column no-wrap flex-center">
-                  <div class="font-22">Üst Düzey Hizmet Kalitesi</div>
-                  <q-separator color="secondary" style="height:2px;"/>
-                  <div class="font-22">
-                      Hizmetimizin güvenli olduğunu garanti ediyoruz.
+
+              <div class="col-md-5">
+                  <div class="font-22">Üst Düzey Hizmet Kalitesi
+
+                  </div>
+                  <q-separator color="secondary" style="height:2px; width:48%"/>
+
+                  <div class="font-14 q-pt-sm">
+                      Hizmetimizin güvenli olduğunu garanti ediyoruz.<br>
+                      Erciyas Avukatlık Bürosu online uygulamamıza<br>
+                      ücretsiz üye olup kullanın ve istediğiniz zaman iptal edin.
                   </div>
 
               </div>
 
-              <div class="col-md-6">
+              <div class="col-md-7">
                 <q-carousel
                   v-model="slideComment"
                   transition-prev="slide-right"
@@ -282,22 +288,94 @@
                       </q-card-section>
                     </q-card>
                   </q-carousel-slide>
-                  
+
                 </q-carousel>
               </div>
 
-              
+              <q-separator color="dark" style="height:2px; width:100%; opacity:0.5"/>
+
             </div>
+
+            <div class="row q-pt-xl justify-center text-white flex-center items-center">
+                <div class="font-22">
+                  Hizmetinizi Seçin ve Hemen Başlayın
+                </div>
+            </div>
+
+            <div class="row q-pt-md q-pb-md justify-center text-white flex-center items-center">
+                <q-select dense color="primary" bg-color="white" filled v-model="serviceType" :options="serviceOptions" style="min-width:300px; min-height: 50px !important;">
+                </q-select>
+            </div>
+
+            <q-btn unelevated glossy color="secondary" label="HEMEN BAŞLAYIN" icon="expand_circle_down" class="q-pl-md q-pr-md q-pt-sm q-pb-sm transform270" />
+
           </template>
         </q-parallax>
       </div>
 
+      <div class="row justify-center text-white flex-center items-center" style="position:relative; top:-30px; z-index:99999; height: 100%;">
+          <div class="col-md-10 bg-white" style="min-height:500px;">
+            <div class="row q-pt-xl justify-center text-grey-9 flex-center items-center">
+              <div class="font-22">
+                ERCİYAS Avukatlık Bürosu
+              </div>
+            </div>
+
+            <div class="row q-pt-xl justify-center text-grey-9 flex-center items-center q-gutter-lg text-bold">
+              <div class="font-14">
+                Nasıl Çalışır?
+              </div>
+              <div class="font-14">
+                Hakkımızda
+              </div>
+              <div class="font-14">
+                Sıkça Sorulan Sorular
+              </div>
+              <div class="font-14">
+                Blog
+              </div>
+              <div class="font-14">
+                İletişim
+              </div>
+            </div>
+
+            <div class="row q-pt-xl justify-center text-grey-9 flex-center items-center q-gutter-lg text-bold">
+              <div class="font-20">
+                <q-img src="~/assets/linkedin.png" style="width:30px" class="cursor-pointer" />
+              </div>
+              <div class="font-20">
+                <q-img src="~/assets/email.png" style="width:30px" class="cursor-pointer" />
+              </div>
+            </div>
+
+            <div class="row q-pt-xl justify-center text-grey-9 flex-center items-center q-gutter-lg text-bold">
+              <q-separator color="grey-3" style="height:2px; width:80%;"/>
+            </div>
+
+            <div class="row q-pt-md text-grey-7" style="padding-left:9.4%">
+              <div class="font-13">
+                  Copyright © 2022 Erciyas Avukatlık Bürosu. Her hakkı saklıdır. <u>Kişisel Verilerin Korunması Hakkında Bilgilendirme</u>
 
 
 
-      <div class="row q-pt-md justify-center items-center" style="min-height:500px;">
+              </div>
+
+              <div class="font-13 q-pt-lg" style="width:90%">
+                  Telif Hakkı © 2022 Erciyas Avukatlık Bürosu. Erciyas Online Avukatlık sistemi yalnızca bilgi ve yazılım sağlar.
+                  Erciyas Online Avukatlık sistemi Avukatı "avukat sevk hizmeti" değildir ve yasal tavsiye vermez veya herhangi bir yasal temsilciliğe katılmaz.
+                  Erciyas Online Avukatlık sistemi Avukatı bir hukuk firması ya da avukat veya hukuk firmmasının yerini almaz. Erciyas Oline Avukatlık sistemi Avukatının
+                  Kullanımı Hizmet Şartlarımıza ve Gizlilik Politikamıza tabidir.
+              </div>
+            </div>
 
 
+            <div class="row q-pt-md text-grey-7 text-right justify-end">
+              <img src="~/assets/iyzico-footer.svg" style="width:550px;padding-right: 150px;" class="cursor-pointer" />
+            </div>
+
+
+
+          </div>
       </div>
   </q-page>
 </template>
@@ -341,70 +419,18 @@ export default {
       },
 
       slide: ref('style'),
-      
+
       lorem: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Itaque voluptatem totam, architecto cupiditate officia rerum.',
       autoplay: ref(true),
 
       slideComment: ref('comment1'),
 
-
-      selection: ref(['id1', 'id4']),
-      options: {
-        chart: {
-          id: 'toplamRandevuSayilari',
-        },
-        colors:['rgba(115, 103, 240, 0.85)'],
-        dataLabels: {
-          style: {
-            colors: ['#4527a0']
-          }
-        },
-        xaxis: {
-          categories: ['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran', 'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık']
-        }
-      },
-      series: [{
-        name: 'Toplam Randevu',
-        data: [10, 15, 5, 7, 8, 10, 20, 10, 9, 25, 18, 12]
-      }],
-
-      steps: [
-        {
-          target: '.v-step-0',
-          header: {
-            title: 'Step 1',
-          },
-          content: 'Try it, you\'ll love it!<br>You can put HTML in the steps and completely customize the DOM to suit your needs.',
-        },
-        {
-          target: '.v-step-1',
-          header: {
-            title: 'Step 2',
-          },
-          content: 'Try it, you\'ll love it!<br>You can put HTML in the steps and completely customize the DOM to suit your needs.',
-        },
-        {
-          target: '.v-step-2',
-          header: {
-            title: 'Step 3',
-          },
-          content: 'Try it, you\'ll love it!<br>You can put HTML in the steps and completely customize the DOM to suit your needs.',
-        },
-        {
-          target: '.v-step-3',
-          header: {
-            title: 'Step 4',
-          },
-          content: 'Try it, you\'ll love it!<br>You can put HTML in the steps and completely customize the DOM to suit your needs.',
-        },
-        {
-          target: '.v-step-4',
-          header: {
-            title: 'Step 5',
-          },
-          content: 'Try it, you\'ll love it!<br>You can put HTML in the steps and completely customize the DOM to suit your needs.',
-        }
+      serviceType: ref('Soru Sormak İstiyorum'),
+      serviceOptions: [
+        'Soru Sormak İstiyorum', 'Randevu Almak İstiyorum'
       ],
+
+
     }
   },
 }
@@ -438,5 +464,17 @@ export default {
     font-size: 1rem !important;
     font-weight: 600;
     color: #5e5873 !important
+  }
+
+  .q-field--filled .q-field__control {
+    border-radius: unset !important;
+  }
+
+  .transform270 {
+    border-radius: 0px !important;
+  }
+
+  .transform270 i {
+    transform: rotate(270deg);
   }
 </style>

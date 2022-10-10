@@ -19,15 +19,6 @@
     <q-page-container>
       <router-view />
     </q-page-container>
-
-    <q-footer reveal class="bg-grey-2 text-grey-8">
-      <q-toolbar>
-        <q-toolbar-title>
-          <div>Erciyas Avukatlık Bürosu</div>
-        </q-toolbar-title>
-      </q-toolbar>
-    </q-footer>
-
   </q-layout>
 </template>
 
