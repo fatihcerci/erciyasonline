@@ -36,7 +36,7 @@
                     {{ lorem }}
                     <br />
                     <br />
-                    <q-btn color="secondary" label="SORU SOR" icon="help" />
+                    <q-btn color="secondary" glossy label="SORU SOR" icon="help" />
                   </div>
                 </q-carousel-slide>
                 <q-carousel-slide name="tv" class="column no-wrap flex-center">
@@ -49,7 +49,7 @@
                     {{ lorem }}
                     <br />
                     <br />
-                    <q-btn color="secondary" label="RANDEVU TALEP ET" icon="event_available" />
+                    <q-btn color="secondary" glossy label="RANDEVU TALEP ET" icon="event_available" />
                   </div>
                 </q-carousel-slide>
               </q-carousel>
@@ -200,6 +200,98 @@
       </div>
 
 
+      <div class="q-mt-md q-gutter-md">
+        <q-parallax>
+          <template v-slot:media>
+            <img src="~/assets/home-parallax4.jpg">
+          </template>
+
+          <template v-slot:content="scope">
+            <div
+              class="row justify-center text-white"
+              :style="{
+                opacity: 0.45 + (1 - scope.percentScrolled) * 0.55,
+                top: (scope.percentScrolled * 60) + '%',
+                left: 0,
+                right: 0
+              }"
+            >
+
+              <div class="col-md-6 column no-wrap flex-center">
+                  <div class="font-22">Üst Düzey Hizmet Kalitesi</div>
+                  <q-separator color="secondary" style="height:2px;"/>
+                  <div class="font-22">
+                      Hizmetimizin güvenli olduğunu garanti ediyoruz.
+                  </div>
+
+              </div>
+
+              <div class="col-md-6">
+                <q-carousel
+                  v-model="slideComment"
+                  transition-prev="slide-right"
+                  transition-next="slide-left"
+                  transition-duration="1000"
+                  transition="100"
+                  swipeable
+                  animated
+                  infinite
+                  :autoplay="autoplay"
+                  control-type="regular"
+                  control-color="accent"
+                  control-text-color="white"
+                  padding
+                  arrows
+                  height="300px"
+                  class="bg-transparent text-white rounded-borders"
+                >
+                  <q-carousel-slide name="comment1" class="column no-wrap flex-center text-grey-9">
+                    <q-card class="bg-white">
+                      <div class="row">
+                        <div class="col-md-6 text-left text-bold font-16 q-pt-xl q-pl-md">
+                          Fatih Ç.
+                        </div>
+                        <div class="col-md-6 text-right text-bold font-16 q-pt-xl q-pr-md">
+                          10.10.2022
+                        </div>
+                      </div>
+
+                      <q-card-section horizontal>
+                        <q-card-section class="q-pb-xl">
+                          {{ lorem }}
+                        </q-card-section>
+                      </q-card-section>
+                    </q-card>
+                  </q-carousel-slide>
+
+                  <q-carousel-slide name="comment2" class="column no-wrap flex-center text-grey-9">
+                    <q-card class="bg-white">
+                      <div class="row">
+                        <div class="col-md-6 text-left text-bold font-16 q-pt-xl q-pl-md">
+                          Meryem Ç.
+                        </div>
+                        <div class="col-md-6 text-right text-bold font-16 q-pt-xl q-pr-md">
+                          24.09.2022
+                        </div>
+                      </div>
+
+                      <q-card-section horizontal>
+                        <q-card-section class="q-pb-xl">
+                          {{ lorem }}
+                        </q-card-section>
+                      </q-card-section>
+                    </q-card>
+                  </q-carousel-slide>
+                  
+                </q-carousel>
+              </div>
+
+              
+            </div>
+          </template>
+        </q-parallax>
+      </div>
+
 
 
 
@@ -223,7 +315,6 @@ export default {
   },
   mounted: async function () {
     //this.$tours['myTour'].start()
-    debugger
     try {
       const { fetch } = apiService()
 
@@ -250,8 +341,11 @@ export default {
       },
 
       slide: ref('style'),
-      lorem: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Itaque voluptatem totam, architecto cupiditate officia rerum, error dignissimos praesentium libero ab nemo.',
+      
+      lorem: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Itaque voluptatem totam, architecto cupiditate officia rerum.',
       autoplay: ref(true),
+
+      slideComment: ref('comment1'),
 
 
       selection: ref(['id1', 'id4']),
