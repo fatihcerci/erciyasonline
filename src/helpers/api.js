@@ -3,7 +3,7 @@ export class Api {
     static get URL() { return "http://localhost/erciyasonlinerest" }
     static get CaptchaSiteKey() { return "6LedtP4gAAAAAKBm1GWXalHnn6YEXlqpppqu9agg" }
 
-    //static get URL() { return "http://ironpunch.org/fonkerarest" }
+    //static get URL() { return "http://ironpunch.org/erciyasonlinerest" }
     //static get CaptchaSiteKey() { return "6LetYxchAAAAAK00I90Nor14XOfKpaT_i_L35aqn" }
 
   }
