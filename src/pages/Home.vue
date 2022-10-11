@@ -29,7 +29,7 @@
                 <q-carousel-slide name="style" class="column no-wrap flex-center">
                   <q-icon name="help" size="56px" />
                   <div class="q-mt-md text-center font-30">
-                    &nbsp;&nbsp;&nbsp;Gerçek Avukatlara Soru Sorun&nbsp;&nbsp;&nbsp;
+                    Gerçek Avukatlara Soru Sorun
                     <q-separator color="secondary" style="height:2px;"/>
                   </div>
                   <div class="q-mt-md text-center font-20">
@@ -42,7 +42,7 @@
                 <q-carousel-slide name="tv" class="column no-wrap flex-center">
                   <q-icon name="event_available" size="56px" />
                   <div class="q-mt-md text-center font-30">
-                    &nbsp;&nbsp;&nbsp;Randevu Talep Edin&nbsp;&nbsp;&nbsp;
+                    Randevu Talep Edin
                     <q-separator color="secondary" style="height:2px;"/>
                   </div>
                   <div class="q-mt-md text-center font-20">
@@ -91,7 +91,7 @@
               <q-icon name="thumb_up" color="secondary" size="2.5rem" />
             </q-card-section>
             <q-card-section class="q-pt-none">
-              Sorununuzu çözün ve yolunuza devam Edin
+              Sorununuzu çözün ve yolunuza devam edin
             </q-card-section>
             <q-separator dark />
           </q-card>
