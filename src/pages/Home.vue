@@ -26,6 +26,8 @@
                 arrows
                 height="300px"
                 class="bg-transparent text-white rounded-borders"
+                :style="{
+                  width: getWidth()}"
               >
                 <q-carousel-slide name="style" class="column no-wrap flex-center">
                   <q-icon name="help" size="56px" />
@@ -34,7 +36,7 @@
                     <q-separator color="secondary" style="height:2px;"/>
                   </div>
                   <div class="q-mt-md text-center font-20">
-                    {{ lorem }}
+                    Hemen sormak istediğiniz sorunuzu sorun. Uzman avukatlardan dilediğiniz desteği alın.
                     <br />
                     <br />
                     <q-btn color="secondary" unelevated glossy label="SORU SOR" icon="help" />
@@ -47,7 +49,7 @@
                     <q-separator color="secondary" style="height:2px;"/>
                   </div>
                   <div class="q-mt-md text-center font-20">
-                    {{ lorem }}
+                    Hemen bir randevu talebi oluşturun. Uzman avukatlardan dilediğiniz desteği yüz yüze görüşerek alın.
                     <br />
                     <br />
                     <q-btn color="secondary" unelevated glossy label="RANDEVU TALEP ET" icon="event_available" />
@@ -395,6 +397,7 @@ export default {
   },
   mounted: async function () {
     //this.$tours['myTour'].start()
+    /*
     try {
       const { fetch } = apiService()
 
@@ -405,6 +408,7 @@ export default {
       //this.$tours['myTour'].start()
     } catch (e) {
     }
+    */
   },
   setup() {
     onMounted(async () => {
@@ -418,6 +422,10 @@ export default {
         backgroundColor: '#8855da',
         width: '5px',
         opacity: '0.75'
+      },
+
+      getWidth: () => {
+        return (window.innerWidth - 300) + 'px'
       },
 
       slide: ref('style'),

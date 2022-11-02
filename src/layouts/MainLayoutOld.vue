@@ -493,10 +493,12 @@ export default {
       },
       test,
       logout : async () => {
+        /*
         await fetch("userop/logout", {id:getUser().id}, true)
         localStorage.removeItem('sessionInfo')
         localStorage.removeItem('token')
         router.push('/login')
+        */
       },
 
     }

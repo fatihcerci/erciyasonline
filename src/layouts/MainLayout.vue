@@ -1,10 +1,10 @@
 <template>
-  
+
     <q-layout view="hHh lpR fFf">
 
       <q-header elevated class="q-pa-md bg-primary text-white " height-hint="98" style="background-color: transparent;">
 
-        
+
         <q-tabs align="center" class="q-mr-md">
           <img src="~/assets//logobeyaz.png" style="width:250px;" class="q-pl-xl" />
           <q-space />
@@ -24,7 +24,7 @@
         <router-view />
       </q-page-container>
     </q-layout>
-  
+
 </template>
 
 <script>
@@ -142,9 +142,11 @@ export default {
 
 
     onMounted(async () => {
+      /*
       if (!localStorage.getItem("sessionInfo")) {
         router.push("/login")
       }
+      */
     })
 
     return {
@@ -177,10 +179,6 @@ export default {
       },
       test,
       logout: async () => {
-        await fetch("userop/logout", { id: getUser().id }, true)
-        localStorage.removeItem('sessionInfo')
-        localStorage.removeItem('token')
-        router.push('/login')
       },
 
     }
