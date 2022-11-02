@@ -38,78 +38,53 @@ const routes = [
     ],
     meta: { requiresAuth: false },
   },
+
+
   {
     path: "/",
     component: Main,
     meta: {
       breadCrumb: 'Ana Sayfa',
-      icon : 'home'
+      icon: 'home'
     },
     children: [
       {
-        path: "",
+        path: "/",
         component: Home,
-        meta: { requiresAuth: false, menu : 'home' }
+        meta: { requiresAuth: false, menu: 'home' }
+      },
+
+
+      {
+        path: "/howtowork",
+        name: 'howtowork',
+        component: () => import("pages/HowToWork.vue"),
       },
       {
-        path: "/emailsettings",
-        component: EmailSettings,
-        meta: { requiresAuth: false, breadCrumb: 'E-posta Ayarları', icon : 'mail', menu : 'emailsettings' }
+        path: "/faquestions",
+        name: 'faquestions',
+        component: () => import("pages/FAQuestions.vue"),
       },
       {
-        path: "/organization",
-        component: Organization,
-        meta: { requiresAuth: false, breadCrumb: 'Organizasyon Tanımları', icon : 'corporate_fare', menu : 'organization' },
-        children : [
-          {
-            path: "groups",
-            component: Groups,
-            props : true,
-            meta: { requiresAuth: false, breadCrumb: 'Grup Tanımları', icon : 'groups', menu : 'groups' },
-            children : [
-
-            ]
-          },
-          {
-            path: "groups/view",
-            props:true,
-            component: GroupView,
-            meta: { requiresAuth: false, breadCrumb: 'Grup Ekle-Düzenle', icon : 'edit', menu : 'groups', parent : { path: "/organization/groups", breadCrumb: 'Grup Tanımları', icon : 'groups' }},
-          },
-
-
-          {
-            path: "roles",
-            component: Roles,
-            meta: { requiresAuth: false, breadCrumb: 'Rol Tanımları', icon : 'manage_accounts', menu : 'roles'},
-          },
-          {
-            path: "roles/view",
-            props:true,
-            component: RoleView,
-            meta: { requiresAuth: false, breadCrumb: 'Rol Ekle-Düzenle', icon : 'edit', menu : 'roles', parent : { path: "/organization/roles", breadCrumb: 'Rol Tanımları', icon : 'manage_accounts' }},
-          },
-          {
-            path: "users",
-            component: Users,
-            meta: { requiresAuth: false, breadCrumb: 'Kullanıcı Tanımları', icon : 'person_add', menu : 'users'},
-          },
-          {
-            path: "users/view",
-            props:true,
-            component: UserView,
-            meta: { requiresAuth: false, breadCrumb: 'Kullanıcı Ekle-Düzenle', icon : 'edit', menu : 'users', parent : { path: "/organization/users", breadCrumb: 'Kullanıcı Tanımları', icon : 'person_add' }},
-          },
-          {
-            path: "users/updatePassword",
-            props:true,
-            component: UserUpdatePassword,
-            meta: { requiresAuth: false, breadCrumb: 'Şifre Güncelle', icon : 'edit', menu : 'users', parent : { path: "/organization/users", breadCrumb: 'Kullanıcı Tanımları', icon : 'person_add' }},
-          },
-        ]
+        path: "/about",
+        name: 'about',
+        component: () => import("pages/About.vue"),
       },
+      {
+        path: "/blog",
+        name: 'blog',
+        component: () => import("pages/Blog.vue"),
+      },
+      {
+        path: "/contact",
+        name: 'contact',
+        component: () => import("pages/Contact.vue"),
+      },
+
+
     ],
   },
+
 
   {
     path: "/:catchAll(.*)*",

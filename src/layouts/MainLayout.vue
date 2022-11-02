@@ -1,30 +1,35 @@
 <template>
-  <q-layout view="hHh lpR fFf">
+  
+    <q-layout view="hHh lpR fFf">
 
-    <q-header elevated class="q-pa-sm bg-primary text-white" height-hint="98">
+      <q-header elevated class="q-pa-md bg-primary text-white " height-hint="98" style="background-color: transparent;">
+
+        
+        <q-tabs align="center" class="q-mr-md">
+          <img src="~/assets//logobeyaz.png" style="width:250px;" class="q-pl-xl" />
+          <q-space />
+          <q-route-tab to="/" label="Ana Sayfa "/>
+          <q-route-tab to="/howtowork" label="Nasıl Çalışır?" />
+          <q-route-tab to="/faquestions" label="Sık Sorulan Sorular" />
+          <q-route-tab to="/about" label="Hakkımızda" />
+          <q-route-tab to="/blog" label="Blog" />
+          <q-route-tab to="/contact" label="İletişim" class="q-mr-xl" />
+          <q-space />
+        </q-tabs>
 
 
-      <q-tabs align="center">
-        <q-route-tab to="/" label="Ana Sayfa" />
-        <q-route-tab to="/" label="Nasıl Çalışır?" />
-        <q-route-tab to="/" label="Sık Sorulan Sorular" />
-        <q-route-tab to="/" label="Hakkımızda" />
-        <q-route-tab to="/" label="Blog" />
-        <q-route-tab to="/" label="İletişim" />
-      </q-tabs>
+      </q-header>
 
-
-    </q-header>
-
-    <q-page-container>
-      <router-view />
-    </q-page-container>
-  </q-layout>
+      <q-page-container>
+        <router-view />
+      </q-page-container>
+    </q-layout>
+  
 </template>
 
 <script>
-import { onMounted, ref, computed, toRefs, reactive} from "vue"
-import { useQuasar } from 'quasar'
+import { onMounted, ref, computed, toRefs, reactive } from "vue"
+import { QPageSticky, useQuasar } from 'quasar'
 import { useRouter } from "vue-router"
 
 import menuController from "../controllers/menuController"
@@ -54,24 +59,24 @@ export default {
   name: "MainLayout",
   components: {
     //Language
-},
+  },
   computed: {
-    crumbs: function() {
+    crumbs: function () {
       this.setMenu(this.$route.meta.menu)
 
       let pathArray = this.$route.path.split("/")
 
       let breadcrumbs = pathArray.reduce((breadcrumbArray, path, idx) => {
-        if(!this.$route.matched[idx]) {
+        if (!this.$route.matched[idx]) {
           return breadcrumbArray
         }
 
-        if(this.$route.matched[idx].meta && this.$route.matched[idx].meta.parent) {
+        if (this.$route.matched[idx].meta && this.$route.matched[idx].meta.parent) {
           let breadCrumbObj = {
             path: this.$route.matched[idx].meta.parent.path,
             to: this.$route.matched[idx].meta.parent.path,
-            text: this.$route.matched[idx] ? (this.$route.matched[idx].meta.parent.breadCrumb || path) : (this.$route.matched[idx-1].meta.parent.breadCrumb || path),
-            icon: this.$route.matched[idx] ? this.$route.matched[idx].meta.parent.icon : this.$route.matched[idx-1].meta.parent.icon,
+            text: this.$route.matched[idx] ? (this.$route.matched[idx].meta.parent.breadCrumb || path) : (this.$route.matched[idx - 1].meta.parent.breadCrumb || path),
+            icon: this.$route.matched[idx] ? this.$route.matched[idx].meta.parent.icon : this.$route.matched[idx - 1].meta.parent.icon,
           }
           breadcrumbArray.push(breadCrumbObj)
 
@@ -82,7 +87,7 @@ export default {
             icon: this.$route.matched[idx].meta.icon
           }
 
-          if(breadCrumbObj.to.includes("//")) {
+          if (breadCrumbObj.to.includes("//")) {
             breadCrumbObj.to = breadCrumbObj.to.substring(1, breadCrumbObj.to.length)
           }
           breadcrumbArray.push(breadCrumbObj)
@@ -91,13 +96,13 @@ export default {
           let breadCrumbObj = {
             path: path,
             to: breadcrumbArray[idx - 1]
-              ?  breadcrumbArray[idx - 1].to + "/" + path
+              ? breadcrumbArray[idx - 1].to + "/" + path
               : "/" + path,
-            text: this.$route.matched[idx] ? (this.$route.matched[idx].meta.breadCrumb || path) : (this.$route.matched[idx-1].meta.breadCrumb || path),
-            icon: this.$route.matched[idx] ? this.$route.matched[idx].meta.icon : this.$route.matched[idx-1].meta.icon,
+            text: this.$route.matched[idx] ? (this.$route.matched[idx].meta.breadCrumb || path) : (this.$route.matched[idx - 1].meta.breadCrumb || path),
+            icon: this.$route.matched[idx] ? this.$route.matched[idx].meta.icon : this.$route.matched[idx - 1].meta.icon,
           }
 
-          if(breadCrumbObj.to.includes("//")) {
+          if (breadCrumbObj.to.includes("//")) {
             breadCrumbObj.to = breadCrumbObj.to.substring(1, breadCrumbObj.to.length)
           }
           breadcrumbArray.push(breadCrumbObj)
@@ -121,7 +126,7 @@ export default {
     const searchBoxOpen = ref(false)
 
     const state = reactive({
-      search : ''
+      search: ''
     })
 
     const searchResult = ref(searchResults)
@@ -137,7 +142,7 @@ export default {
 
 
     onMounted(async () => {
-      if(!localStorage.getItem("sessionInfo")) {
+      if (!localStorage.getItem("sessionInfo")) {
         router.push("/login")
       }
     })
@@ -150,16 +155,16 @@ export default {
       setMenu,
       getUser,
       leftDrawerOpen,
-      toggleLeftDrawer () {
+      toggleLeftDrawer() {
         leftDrawerOpen.value = !leftDrawerOpen.value
       },
       searchBoxOpen,
-      toggleSearchBox () {
+      toggleSearchBox() {
         state.search = ''
         searchBoxOpen.value = !searchBoxOpen.value
       },
       searchResult,
-      filterFn (val, update, abort) {
+      filterFn(val, update, abort) {
         if (val.length < 2) {
           abort()
           return
@@ -171,8 +176,8 @@ export default {
         })
       },
       test,
-      logout : async () => {
-        await fetch("userop/logout", {id:getUser().id}, true)
+      logout: async () => {
+        await fetch("userop/logout", { id: getUser().id }, true)
         localStorage.removeItem('sessionInfo')
         localStorage.removeItem('token')
         router.push('/login')
@@ -184,55 +189,63 @@ export default {
 </script>
 
 <style lang="css">
-  .q-item__section--avatar {
-    min-width: 0px !important;
-  }
+.q-item__section--avatar {
+  min-width: 0px !important;
+}
 
-  .user-menu {
-    -webkit-box-shadow: 0 5px 25px rgb(34 41 47 / 10%) !important;
-    box-shadow: -1 5px 25pxrgba(34,41,47,.1) !important;
-    border:1px solid rgba(34,41,47,.1);
-  }
+.user-menu {
+  -webkit-box-shadow: 0 5px 25px rgb(34 41 47 / 10%) !important;
+  box-shadow: -1 5px 25pxrgba(34, 41, 47, .1) !important;
+  border: 1px solid rgba(34, 41, 47, .1);
+}
 
-  .q-badge--floating {
-    top: 1px !important;
-    right: -2px !important;
-  }
+.q-badge--floating {
+  top: 1px !important;
+  right: -2px !important;
+}
 
-  .user-menu .q-hoverable:hover {
-    color: #6610f2 !important;
-  }
+.user-menu .q-hoverable:hover {
+  color: #6610f2 !important;
+}
 
-  .user-menu .q-hoverable:hover > .q-focus-helper {
-    background-color: #6610f2 !important;
-  }
+.user-menu .q-hoverable:hover>.q-focus-helper {
+  background-color: #6610f2 !important;
+}
 
-  .menu-active {
-    background: linear-gradient(118deg,#7367f0,rgba(115,103,240,.7)) !important;
-    color : white !important;
-    -webkit-box-shadow: 0 0 10px 1px rgb(115 103 240 / 70%) !important;
-    box-shadow: 0 0 10px 1px rgba(115,103,240,.7) !important;
-    border-radius: 4px !important;
-  }
+.menu-active {
+  background: linear-gradient(118deg, #7367f0, rgba(115, 103, 240, .7)) !important;
+  color: white !important;
+  -webkit-box-shadow: 0 0 10px 1px rgb(115 103 240 / 70%) !important;
+  box-shadow: 0 0 10px 1px rgba(115, 103, 240, .7) !important;
+  border-radius: 4px !important;
+}
 
-  .language .q-select__dropdown-icon {
-    display: none !important;
-  }
+.language .q-select__dropdown-icon {
+  display: none !important;
+}
 
-  .q-field--standard .q-field__control:before {
-    border-bottom:none;
-  }
+.q-field--standard .q-field__control:before {
+  border-bottom: none;
+}
 
-  .q-toolbar .q-select__dropdown-icon {
-    display: none;
-  }
+.q-toolbar .q-select__dropdown-icon {
+  display: none;
+}
 
-  .q-menu.q-position-engine {
-    background: #f5f5f5  !important;
-    color: #5e5873 !important;
-    font-weight: 600 !important;
-    box-shadow: none !important;
-  }
+.q-menu.q-position-engine {
+  background: #f5f5f5 !important;
+  color: #5e5873 !important;
+  font-weight: 600 !important;
+  box-shadow: none !important;
+}
 
+.jumbotron {
+position: relative;
+background:center center;
+background-size: cover;
+width: 100%;
+min-height: 550px;
+overflow: hidden;
+}
 
 </style>

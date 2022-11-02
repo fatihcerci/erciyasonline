@@ -1,6 +1,7 @@
 <template>
   <q-page q-layout view="hHh lpR fFf" class="">
 
+    <div style="height:500px;">
 
 
       <div class="col-md-12">
@@ -317,7 +318,7 @@
           <div class="col-md-10 bg-white" style="min-height:500px;">
             <div class="row q-pt-xl justify-center text-grey-9 flex-center items-center">
               <div class="font-22">
-                ERCİYAS Avukatlık Bürosu
+                <img src="~/assets//logo1.png" style="width:220px ;" >
               </div>
             </div>
 
@@ -377,6 +378,7 @@
 
           </div>
       </div>
+    </div>
   </q-page>
 </template>
 
