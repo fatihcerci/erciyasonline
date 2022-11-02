@@ -37,14 +37,14 @@
 
             <div class="row justify-center flex-center items-center ">
                 <div class="col-md-8 justify-center items-center flex-center">
-                    <div class="row justify-center  bg-white " style="position:relative; top:-100px;  height: 1300px;">
+                    <div class="row justify-center  bg-white " style="position:relative; top:-100px;  height: 1150px;">
                         <div class="col-10 text-center text-primary q-pt-xs">
                             <h5 class="text-bold font-25">Nitelikli Avukatlardan Hızlı Cevaplar Alın.
                             </h5>
                         </div>
 
-                        <div class="row" style="top:-90px;">
-                            <div class="col vl">
+                        <div class="row" style="top:-90px;" >
+                            <div class="col vl" style="height:800px;">
                             </div>
                         </div>
 
@@ -174,16 +174,15 @@
                     </div>
                     <q-separator class="q-ml-lg"  color="secondary" style="height:2px; width:48%" />
                     <div class="font-14 q-pa-lg">
-                        <p class="font-15">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquam
-                            dolorem
-                            voluptatibus earum assumenda temporibus veritatis mollitia quis, magnam rerum.
-                            Repellat, quos tempora. Cumque eligendi ea necessitatibus. Minima, eum officia.
-                            Quidem!</p>
+                        <p class="font-15">
+                            Hizmetimizin güvenli olduğunu garanti ediyoruz. Erciyas Avukatlık Bürosu online uygulamamıza ücretsiz
+                            üye olup kullanın ve istediğiniz zaman iptal edin.
+                        </p>
                     </div>
 
                 </div>
                 <div class="col-sm-4 border">
-                    <q-parallax src="~/assets/home-parallax3.jpg" style="height: 270px; border-left: 0cm;">
+                    <q-parallax src="~/assets/home-parallax3.jpg" style="height: 275px; border-left: 0cm;">
                         <h5 class="text-white text-center">Hadi Sorunuzu Sormaya Başlayın. </h5>
 
                         <q-btn class="shadow-0" color="secondary" label="Hemen Danışın" />
